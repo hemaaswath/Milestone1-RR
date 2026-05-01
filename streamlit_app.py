@@ -70,47 +70,187 @@ def get_api_status():
     except:
         return False
 
-def get_demo_recommendations():
+def get_demo_recommendations(location="Bellandur"):
     """Get demo recommendations when API is not available."""
+    
+    # Demo data for different locations
+    demo_data = {
+        "Bellandur": [
+            {
+                "rank": 1,
+                "restaurant_name": "Paradise Biryani - Bellandur",
+                "score": 0.95,
+                "rating": 4.5,
+                "cost_for_two": 800,
+                "location": "Bellandur",
+                "cuisines": "North Indian, Chinese",
+                "explanation": "Great option in Bellandur with excellent ratings and reasonable prices for medium budget."
+            },
+            {
+                "rank": 2,
+                "restaurant_name": "Karnataka Food Corner - Bellandur",
+                "score": 0.88,
+                "rating": 4.2,
+                "cost_for_two": 600,
+                "location": "Bellandur",
+                "cuisines": "South Indian",
+                "explanation": "Good South Indian cuisine with affordable prices and decent ratings."
+            },
+            {
+                "rank": 3,
+                "restaurant_name": "The Italian Kitchen - Bellandur",
+                "score": 0.82,
+                "rating": 4.0,
+                "cost_for_two": 900,
+                "location": "Bellandur",
+                "cuisines": "Continental, Italian",
+                "explanation": "Continental and Italian cuisine with good ratings, slightly higher cost."
+            }
+        ],
+        "Indiranagar": [
+            {
+                "rank": 1,
+                "restaurant_name": "Toit - Indiranagar",
+                "score": 0.96,
+                "rating": 4.6,
+                "cost_for_two": 1200,
+                "location": "Indiranagar",
+                "cuisines": "Brewery, Continental",
+                "explanation": "Popular brewery with excellent ambiance and great food in Indiranagar."
+            },
+            {
+                "rank": 2,
+                "restaurant_name": "Chai Point - Indiranagar",
+                "score": 0.89,
+                "rating": 4.3,
+                "cost_for_two": 400,
+                "location": "Indiranagar",
+                "cuisines": "Cafe, Indian",
+                "explanation": "Cozy cafe perfect for quick meals and meetings in Indiranagar."
+            },
+            {
+                "rank": 3,
+                "restaurant_name": "Fenny's Kitchen - Indiranagar",
+                "score": 0.84,
+                "rating": 4.1,
+                "cost_for_two": 800,
+                "location": "Indiranagar",
+                "cuisines": "Goan, Seafood",
+                "explanation": "Authentic Goan cuisine with fresh seafood options in Indiranagar."
+            }
+        ],
+        "HSR Layout": [
+            {
+                "rank": 1,
+                "restaurant_name": "Brahmin's Coffee Bar - HSR Layout",
+                "score": 0.94,
+                "rating": 4.4,
+                "cost_for_two": 300,
+                "location": "HSR Layout",
+                "cuisines": "South Indian, Breakfast",
+                "explanation": "Traditional South Indian breakfast spot famous for filter coffee in HSR Layout."
+            },
+            {
+                "rank": 2,
+                "restaurant_name": "Wang's Kitchen - HSR Layout",
+                "score": 0.87,
+                "rating": 4.2,
+                "cost_for_two": 700,
+                "location": "HSR Layout",
+                "cuisines": "Chinese, Thai",
+                "explanation": "Authentic Asian cuisine with great variety in HSR Layout."
+            },
+            {
+                "rank": 3,
+                "restaurant_name": "Fresh Menu - HSR Layout",
+                "score": 0.81,
+                "rating": 4.0,
+                "cost_for_two": 500,
+                "location": "HSR Layout",
+                "cuisines": "Healthy, Salad",
+                "explanation": "Healthy meal options with fresh ingredients in HSR Layout."
+            }
+        ],
+        "Koramangala": [
+            {
+                "rank": 1,
+                "restaurant_name": "Olive Bar & Kitchen - Koramangala",
+                "score": 0.97,
+                "rating": 4.7,
+                "cost_for_two": 1500,
+                "location": "Koramangala",
+                "cuisines": "Mediterranean, European",
+                "explanation": "Upscale dining experience with Mediterranean cuisine in Koramangala."
+            },
+            {
+                "rank": 2,
+                "restaurant_name": "Cafe Coffee Day - Koramangala",
+                "score": 0.85,
+                "rating": 4.0,
+                "cost_for_two": 400,
+                "location": "Koramangala",
+                "cuisines": "Cafe, Beverages",
+                "explanation": "Popular coffee chain perfect for casual meetings in Koramangala."
+            },
+            {
+                "rank": 3,
+                "restaurant_name": "Truffles - Koramangala",
+                "score": 0.83,
+                "rating": 3.9,
+                "cost_for_two": 600,
+                "location": "Koramangala",
+                "cuisines": "Continental, Fast Food",
+                "explanation": "Fusion cuisine with quick service in Koramangala."
+            }
+        ],
+        "Marathahalli": [
+            {
+                "rank": 1,
+                "restaurant_name": "Meghana Foods - Marathahalli",
+                "score": 0.93,
+                "rating": 4.3,
+                "cost_for_two": 600,
+                "location": "Marathahalli",
+                "cuisines": "Andhra, Biryani",
+                "explanation": "Spicy Andhra cuisine famous for biryani in Marathahalli."
+            },
+            {
+                "rank": 2,
+                "restaurant_name": "Absolute Barbecues - Marathahalli",
+                "score": 0.86,
+                "rating": 4.1,
+                "cost_for_two": 1000,
+                "location": "Marathahalli",
+                "cuisines": "Barbecue, Grill",
+                "explanation": "Live barbecue experience with great ambiance in Marathahalli."
+            },
+            {
+                "rank": 3,
+                "restaurant_name": "Pizza Hut - Marathahalli",
+                "score": 0.80,
+                "rating": 3.8,
+                "cost_for_two": 500,
+                "location": "Marathahalli",
+                "cuisines": "Pizza, Italian",
+                "explanation": "Popular pizza chain with quick delivery in Marathahalli."
+            }
+        ]
+    }
+    
+    # Get recommendations for the selected location, fallback to Bellandur
+    recommendations = demo_data.get(location, demo_data["Bellandur"])
+    
+    # Calculate summary
+    avg_rating = sum(r["rating"] for r in recommendations) / len(recommendations)
+    
     return {
         "status": "success",
         "data": {
-            "recommendations": [
-                {
-                    "rank": 1,
-                    "restaurant_name": "Test Restaurant 1 - Bellandur",
-                    "score": 0.95,
-                    "rating": 4.5,
-                    "cost_for_two": 800,
-                    "location": "Bellandur",
-                    "cuisines": "North Indian, Chinese",
-                    "explanation": "Great option in Bellandur with excellent ratings and reasonable prices for medium budget."
-                },
-                {
-                    "rank": 2,
-                    "restaurant_name": "Test Restaurant 2 - Bellandur",
-                    "score": 0.88,
-                    "rating": 4.2,
-                    "cost_for_two": 600,
-                    "location": "Bellandur",
-                    "cuisines": "South Indian",
-                    "explanation": "Good South Indian cuisine with affordable prices and decent ratings."
-                },
-                {
-                    "rank": 3,
-                    "restaurant_name": "Test Restaurant 3 - Bellandur",
-                    "score": 0.82,
-                    "rating": 4.0,
-                    "cost_for_two": 900,
-                    "location": "Bellandur",
-                    "cuisines": "Continental, Italian",
-                    "explanation": "Continental and Italian cuisine with good ratings, slightly higher cost."
-                }
-            ],
+            "recommendations": recommendations,
             "summary": {
-                "final_recommendations": 3,
-                "avg_rating": 4.23,
-                "filtered_candidates": 3
+                "final_recommendations": len(recommendations),
+                "avg_rating": round(avg_rating, 2),
+                "filtered_candidates": len(recommendations)
             }
         },
         "metadata": {
@@ -362,11 +502,11 @@ def main():
                     display_recommendations(recommendations, preferences)
                 else:
                     st.warning("API request failed, showing demo data")
-                    demo_recommendations = get_demo_recommendations()
+                    demo_recommendations = get_demo_recommendations(preferences.get("location", "Bellandur"))
                     display_recommendations(demo_recommendations, preferences)
             else:
                 # Show demo recommendations
-                demo_recommendations = get_demo_recommendations()
+                demo_recommendations = get_demo_recommendations(preferences.get("location", "Bellandur"))
                 display_recommendations(demo_recommendations, preferences)
     
     # Footer
