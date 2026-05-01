@@ -319,29 +319,32 @@ def display_recommendations(recommendations_data, preferences):
     
     for i, restaurant in enumerate(recommendations):
         with st.container():
-            st.markdown(f"""
-            <div class="restaurant-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <h3>{restaurant.get('restaurant_name', 'Unknown Restaurant')}</h3>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span class="rank-badge">#{restaurant.get('rank', 1)}</span>
-                        <span class="score-badge">{restaurant.get('score', 0) * 100:.0f}% Match</span>
-                    </div>
+            # Restaurant header with badges
+            col1, col2 = st.columns([3, 1])
+            with col1:
+                st.subheader(f"🍽️ {restaurant.get('restaurant_name', 'Unknown Restaurant')}")
+            with col2:
+                st.markdown(f"""
+                <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem;">
+                    <span style="background: #3b82f6; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: bold; font-size: 0.875rem;">#{restaurant.get('rank', 1)}</span>
+                    <span style="background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: bold; font-size: 0.875rem;">{restaurant.get('score', 0) * 100:.0f}% Match</span>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                    <div>📍 <strong>Location:</strong> {restaurant.get('location', 'Unknown')}</div>
-                    <div>🍽️ <strong>Cuisine:</strong> {restaurant.get('cuisines', 'Various')}</div>
-                    <div>⭐ <strong>Rating:</strong> {restaurant.get('rating', 0)}/5</div>
-                    <div>💰 <strong>Cost for Two:</strong> ₹{restaurant.get('cost_for_two', 0):,}</div>
-                </div>
-                
-                <div class="explanation-box">
-                    <h4>💡 Why we recommend this restaurant:</h4>
-                    <p>{restaurant.get('explanation', 'Great match for your preferences')}</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
+            
+            # Restaurant details
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write(f"📍 **Location:** {restaurant.get('location', 'Unknown')}")
+                st.write(f"🍽️ **Cuisine:** {restaurant.get('cuisines', 'Various')}")
+            with col2:
+                st.write(f"⭐ **Rating:** {restaurant.get('rating', 0)}/5")
+                st.write(f"💰 **Cost for Two:** ₹{restaurant.get('cost_for_two', 0):,}")
+            
+            # Explanation
+            with st.expander("💡 Why we recommend this restaurant", expanded=True):
+                st.write(restaurant.get('explanation', 'Great match for your preferences'))
+            
+            st.divider()
     
     # Display metadata if available
     if metadata:
