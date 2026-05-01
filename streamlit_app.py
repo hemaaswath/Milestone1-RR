@@ -103,7 +103,7 @@ def get_demo_recommendations():
                     "rating": 4.0,
                     "cost_for_two": 900,
                     "location": "Bellandur",
-                    "cuisines "Continental, Italian",
+                    "cuisines": "Continental, Italian",
                     "explanation": "Continental and Italian cuisine with good ratings, slightly higher cost."
                 }
             ],
