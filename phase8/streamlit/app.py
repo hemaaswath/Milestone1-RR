@@ -388,7 +388,7 @@ def create_charts(recommendations_data):
             color="rating",
             color_continuous_scale="Viridis"
         )
-        fig_ratings.update_xaxis(tickangle=45)
+        fig_ratings.update_xaxes(tickangle=45)
         st.plotly_chart(fig_ratings, use_container_width=True)
     
     with col2:
@@ -402,7 +402,7 @@ def create_charts(recommendations_data):
             color="cost_for_two",
             color_continuous_scale="Blues"
         )
-        fig_cost.update_xaxis(tickangle=45)
+        fig_cost.update_xaxes(tickangle=45)
         st.plotly_chart(fig_cost, use_container_width=True)
     
     # Score distribution
