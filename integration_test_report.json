@@ -1,0 +1,296 @@
+{
+  "timestamp": "2026-05-01T16:18:50.211293",
+  "test_suite": "Phase 6 + Phase 7 Integration",
+  "summary": {
+    "total": 30,
+    "passed": 20,
+    "failed": 2,
+    "skipped": 0,
+    "success_rate": 66.66666666666666
+  },
+  "services": {
+    "backend": "http://127.0.0.1:8000",
+    "frontend": "http://127.0.0.1:3000",
+    "api_base": "http://127.0.0.1:8000/api/v1"
+  },
+  "test_results": [
+    {
+      "test": "Service Availability",
+      "status": "INFO",
+      "message": "Checking service availability...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:49.769871"
+    },
+    {
+      "test": "Backend Service",
+      "status": "PASS",
+      "message": "Running at http://127.0.0.1:8000",
+      "details": {
+        "status": "healthy",
+        "phase": "6"
+      },
+      "timestamp": "2026-05-01T16:18:49.776381"
+    },
+    {
+      "test": "Frontend Service",
+      "status": "PASS",
+      "message": "Running at http://127.0.0.1:3000",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:49.799945"
+    },
+    {
+      "test": "API Endpoints",
+      "status": "INFO",
+      "message": "Testing Phase 6 API endpoints...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:49.800238"
+    },
+    {
+      "test": "Endpoint: Health Check",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 160,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.821808"
+    },
+    {
+      "test": "Endpoint: API Metadata",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 483,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.850522"
+    },
+    {
+      "test": "Endpoint: Locations",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 122,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.873099"
+    },
+    {
+      "test": "Endpoint: Cuisines",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 132,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.897021"
+    },
+    {
+      "test": "Endpoint: Statistics",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 320,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.918856"
+    },
+    {
+      "test": "Endpoint: Telemetry",
+      "status": "PASS",
+      "message": "HTTP 200",
+      "details": {
+        "response_size": 278,
+        "has_status": true
+      },
+      "timestamp": "2026-05-01T16:18:49.928299"
+    },
+    {
+      "test": "Form Data Loading",
+      "status": "INFO",
+      "message": "Testing form data loading...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:49.928860"
+    },
+    {
+      "test": "Locations Loading",
+      "status": "PASS",
+      "message": "Loaded 5 locations",
+      "details": {
+        "sample_locations": [
+          "Bellandur",
+          "Delhi",
+          "Mumbai"
+        ]
+      },
+      "timestamp": "2026-05-01T16:18:49.937039"
+    },
+    {
+      "test": "Cuisines Loading",
+      "status": "PASS",
+      "message": "Loaded 5 cuisines",
+      "details": {
+        "sample_cuisines": [
+          "North Indian",
+          "Chinese",
+          "Italian"
+        ]
+      },
+      "timestamp": "2026-05-01T16:18:49.960687"
+    },
+    {
+      "test": "Recommendation Workflow",
+      "status": "INFO",
+      "message": "Testing complete recommendation workflow...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:49.961381"
+    },
+    {
+      "test": "Workflow: Basic Bellandur Medium Budget",
+      "status": "PASS",
+      "message": "Got 3 recommendations",
+      "details": {
+        "response_time": "0.015s",
+        "total_candidates": 10,
+        "filtered_candidates": 5,
+        "avg_rating": 4.2,
+        "first_restaurant": "Test Restaurant 1 - Bellandur",
+        "match_score": "95.0%"
+      },
+      "timestamp": "2026-05-01T16:18:49.977973"
+    },
+    {
+      "test": "Workflow: Delhi High Budget North Indian",
+      "status": "PASS",
+      "message": "Got 3 recommendations",
+      "details": {
+        "response_time": "0.021s",
+        "total_candidates": 10,
+        "filtered_candidates": 5,
+        "avg_rating": 4.2,
+        "first_restaurant": "Test Restaurant 1 - Delhi",
+        "match_score": "95.0%"
+      },
+      "timestamp": "2026-05-01T16:18:49.999487"
+    },
+    {
+      "test": "Workflow: Mumbai Low Budget Chinese",
+      "status": "PASS",
+      "message": "Got 3 recommendations",
+      "details": {
+        "response_time": "0.018s",
+        "total_candidates": 10,
+        "filtered_candidates": 5,
+        "avg_rating": 4.2,
+        "first_restaurant": "Test Restaurant 1 - Mumbai",
+        "match_score": "95.0%"
+      },
+      "timestamp": "2026-05-01T16:18:50.018216"
+    },
+    {
+      "test": "Error Handling",
+      "status": "INFO",
+      "message": "Testing error handling...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.018528"
+    },
+    {
+      "test": "Error: Missing Location",
+      "status": "PASS",
+      "message": "Correctly returned 400",
+      "details": {
+        "error_message": "Location is required"
+      },
+      "timestamp": "2026-05-01T16:18:50.024618"
+    },
+    {
+      "test": "Error: Missing Budget",
+      "status": "FAIL",
+      "message": "Expected 400, got 200",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.043531"
+    },
+    {
+      "test": "Error: Invalid Budget",
+      "status": "FAIL",
+      "message": "Expected 400, got 200",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.074453"
+    },
+    {
+      "test": "Error: Empty Payload",
+      "status": "PASS",
+      "message": "Correctly returned 400",
+      "details": {
+        "error_message": "Location is required"
+      },
+      "timestamp": "2026-05-01T16:18:50.103493"
+    },
+    {
+      "test": "CORS Configuration",
+      "status": "INFO",
+      "message": "Testing CORS headers...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.103969"
+    },
+    {
+      "test": "CORS Headers",
+      "status": "PASS",
+      "message": "CORS properly configured",
+      "details": {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Methods": null,
+        "Access-Control-Allow-Headers": null
+      },
+      "timestamp": "2026-05-01T16:18:50.141581"
+    },
+    {
+      "test": "Performance Metrics",
+      "status": "INFO",
+      "message": "Testing performance...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.142382"
+    },
+    {
+      "test": "Performance Metrics",
+      "status": "PASS",
+      "message": "Response times measured",
+      "details": {
+        "avg_response_time": "0.008s",
+        "min_response_time": "0.005s",
+        "max_response_time": "0.018s",
+        "total_requests": 5
+      },
+      "timestamp": "2026-05-01T16:18:50.183687"
+    },
+    {
+      "test": "Data Integrity",
+      "status": "INFO",
+      "message": "Testing data integrity...",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.183925"
+    },
+    {
+      "test": "Ranking Integrity",
+      "status": "PASS",
+      "message": "Ranks are sequential and correct",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.206350"
+    },
+    {
+      "test": "Score Integrity",
+      "status": "PASS",
+      "message": "Scores are properly ordered",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.207037"
+    },
+    {
+      "test": "Type Integrity",
+      "status": "PASS",
+      "message": "All data types are correct",
+      "details": {},
+      "timestamp": "2026-05-01T16:18:50.207457"
+    }
+  ],
+  "overall_status": "FAIL"
+}

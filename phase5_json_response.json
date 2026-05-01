@@ -1,0 +1,57 @@
+{
+  "status": "success",
+  "data": {
+    "recommendations": [
+      {
+        "restaurant_name": "Spice Garden",
+        "rank": 1,
+        "score": 0.92,
+        "explanation": "Perfect match for North Indian cuisine in Bellandur with excellent ratings and reasonable prices for families.",
+        "location": "Bellandur",
+        "cuisines": "North Indian, Mughlai",
+        "rating": 4.3,
+        "cost_for_two": 800,
+        "metadata": {
+          "confidence_score": 0.92,
+          "match_reasons": [],
+          "additional_info": {},
+          "timestamp": "2026-05-01T15:23:25.507294"
+        }
+      },
+      {
+        "restaurant_name": "Paradise Biryani",
+        "rank": 2,
+        "score": 0.88,
+        "explanation": "Highly rated biryani specialist in Bellandur, great for families with parking available.",
+        "location": "Bellandur",
+        "cuisines": "Biryani, North Indian",
+        "rating": 4.1,
+        "cost_for_two": 600,
+        "metadata": {
+          "confidence_score": 0.88,
+          "match_reasons": [],
+          "additional_info": {},
+          "timestamp": "2026-05-01T15:23:25.507351"
+        }
+      },
+      {
+        "restaurant_name": "The Village",
+        "rank": 3,
+        "score": 0.85,
+        "explanation": "Authentic North Indian cuisine with traditional ambiance, good value for money in Bellandur.",
+        "location": "Bellandur",
+        "cuisines": "North Indian, Chinese",
+        "rating": 4.0,
+        "cost_for_two": 700,
+        "metadata": {
+          "confidence_score": 0.85,
+          "match_reasons": [],
+          "additional_info": {},
+          "timestamp": "2026-05-01T15:23:25.507368"
+        }
+      }
+    ],
+    "summary": null,
+    "generated_at": "2026-05-01T15:23:25.507402"
+  }
+}

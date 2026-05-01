@@ -1,0 +1,8 @@
+Phase 1 Data Foundation Summary
+Raw records: 51717
+Clean records: 12140
+Duplicate/invalid removed: 39577
+Unique locations: 93
+Unique restaurants: 8788
+Average rating: N/A
+Average cost_for_two: N/A

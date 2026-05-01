@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Restaurant Recommendations</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>FoodAI</span>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#api" class="nav-link">API</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">AI-Powered</span>
+                        <br>Restaurant Recommendations
+                    </h1>
+                    <p class="hero-subtitle">
+                        Discover your perfect dining experience with personalized AI recommendations
+                    </p>
+                </div>
+            </section>
+
+            <!-- Search Form -->
+            <section class="search-section">
+                <div class="search-card">
+                    <h2 class="search-title">
+                        <i class="fas fa-search"></i>
+                        Find Your Perfect Restaurant
+                    </h2>
+                    <form id="recommendation-form" class="search-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="location" class="form-label">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Location
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="location" 
+                                    name="location" 
+                                    class="form-input"
+                                    placeholder="e.g., Bellandur, Delhi"
+                                    required
+                                >
+                                <div class="suggestions" id="location-suggestions"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget" class="form-label">
+                                    <i class="fas fa-wallet"></i>
+                                    Budget
+                                </label>
+                                <select id="budget" name="budget" class="form-select">
+                                    <option value="">Select Budget</option>
+                                    <option value="low">Low (Under ₹600)</option>
+                                    <option value="medium" selected>Medium (₹600-1500)</option>
+                                    <option value="high">High (Above ₹1500)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cuisine" class="form-label">
+                                    <i class="fas fa-utensils"></i>
+                                    Cuisine
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="cuisine" 
+                                    name="cuisine" 
+                                    class="form-input"
+                                    placeholder="e.g., North Indian, Italian"
+                                >
+                                <div class="suggestions" id="cuisine-suggestions"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="min_rating" class="form-label">
+                                    <i class="fas fa-star"></i>
+                                    Minimum Rating
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="min_rating" 
+                                    name="min_rating" 
+                                    class="form-input"
+                                    placeholder="e.g., 4.0"
+                                    min="0" 
+                                    max="5" 
+                                    step="0.1"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="additional_preferences" class="form-label">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Additional Preferences
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="additional_preferences" 
+                                    name="additional_preferences" 
+                                    class="form-input"
+                                    placeholder="e.g., family-friendly, outdoor seating"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary" id="submit-btn">
+                                <i class="fas fa-magic"></i>
+                                Get Recommendations
+                            </button>
+                            <button type="button" class="btn-secondary" id="clear-btn">
+                                <i class="fas fa-redo"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <section id="loading" class="loading-section" style="display: none;">
+                <div class="loading-card">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">AI is analyzing restaurants for you...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results" class="results-section" style="display: none;">
+                <div class="results-header">
+                    <h2 class="results-title">
+                        <i class="fas fa-list"></i>
+                        Your Personalized Recommendations
+                    </h2>
+                    <div class="results-controls">
+                        <select id="view-format" class="view-select">
+                            <option value="cards">Cards View</option>
+                            <option value="table">Table View</option>
+                            <option value="map">Map View</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="recommendations-container" class="recommendations-grid">
+                    <!-- Recommendations will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section id="error" class="error-section" style="display: none;">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="error-message">Please try again later.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FoodAI</h4>
+                    <p>AI-powered restaurant recommendations tailored to your preferences.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Personalized Recommendations</li>
+                        <li>Real-time Search</li>
+                        <li>AI Explanations</li>
+                        <li>Multiple Cuisines</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Technologies</h4>
+                    <ul>
+                        <li>Large Language Models</li>
+                        <li>Machine Learning</li>
+                        <li>Real-time Processing</li>
+                        <li>Modern Web Tech</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FoodAI. Powered by AI technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
